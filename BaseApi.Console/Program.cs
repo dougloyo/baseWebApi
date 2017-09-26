@@ -1,5 +1,5 @@
 ﻿using System.Net.Http;
-using BaseApi.Web;
+using System.Diagnostics;
 using Microsoft.Owin.Hosting;
 
 namespace BaseApi.Console
@@ -14,12 +14,17 @@ namespace BaseApi.Console
             using (WebApp.Start<Startup>(url: baseAddress))
             {
                 // Create HttpCient and make a request to api/values 
-                HttpClient client = new HttpClient();
+                var client = new HttpClient();
 
                 var response = client.GetAsync(baseAddress + "api/test").Result;
 
                 System.Console.WriteLine(response);
                 System.Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+
+                // Open the default browser and load the 
+                Process.Start(baseAddress);
+
+                System.Console.WriteLine(response);
                 System.Console.ReadLine();
             }
         }

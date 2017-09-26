@@ -6,11 +6,11 @@ namespace BaseApi.Web
 {
     public class Startup
     {
-        public void Configuration(IAppBuilder appBuilder)
+        public virtual void Configuration(IAppBuilder app)
         {
             var httpConfiguration = new HttpConfiguration();
             WebApiConfig.Register(httpConfiguration);
-            appBuilder.UseWebApi(httpConfiguration);
+            app.UseWebApi(httpConfiguration);
         }
     }
 }
